@@ -9,7 +9,7 @@
 
 	let scrollY;
 	$: transparent = browser && scrollY <= 56 && $page.url.pathname === '/';
-	$: bgColor = transparent ? 'rgba(0,0,0,0)' : 'black';
+	// $: bgColor = transparent ? 'rgba(0,0,0,0)' : 'black';
 	$: shadow = transparent ? 'none' : 'var(--shadow)';
 
 	$: display = $sidebarOpen ? 'none' : 'flex';
@@ -19,7 +19,7 @@
 
 <nav
 	class="app-bar"
-	style={`background-color: ${bgColor}; box-shadow: ${shadow}; display: ${display} `}
+	style={` box-shadow: ${shadow}; display: ${display} `}
 >
 	<button aria-label="Menu" on:click={() => ($sidebarOpen = true)}>
 		<Fa icon={faBars} size="2x" />
@@ -36,6 +36,10 @@
 		{/each}
 	</ul>
 </nav>
+<div class="nav-graphic">
+<img src="assets/nav_img.png" alt="" />
+<hr>
+</div>
 
 <style lang="scss">
 	button {
@@ -58,6 +62,38 @@
 		background-clip: text;
 		-webkit-background-clip: text;
 		-webkit-text-fill-color: transparent;
+	}
+
+	.nav-graphic{
+		position: -webkit-sticky; /* Safari */
+		position: sticky;
+		top: 0;
+	}
+
+	hr{
+		// size: 35%;
+		color: white;
+		background-color: white;
+		// margin:4.3rem;
+		// margin-left:59.3rem ;
+		border: 4px solid white;
+  		border-radius: 35px;
+		box-shadow: 1px 0px 10px 7px rgba(84, 222, 121, .99);
+		position:absolute;
+		right:3.2%;
+		top:59.7px;
+		width:33%;
+		z-index:10;
+		float:right;
+	}
+
+	img{
+		width:13%;
+		position:absolute;
+		right:0px;
+		top:51px;
+		float:right;
+		z-index:15;
 	}
 
 	@media (max-width: 900px) {
